@@ -9,14 +9,14 @@ Employee employee3 = new Employee("Bartek", "Rozwadowski", 31);
 employee1.AddScore(5);
 employee2.AddScore(4);
 employee3.AddScore(5);
-employee1.AddScore(6);
+employee1.AddScore(8);
 employee2.AddScore(8);
 employee3.AddScore(9);
-employee1.AddScore(2);
+employee1.AddScore(9);
 employee2.AddScore(3);
 employee3.AddScore(7);
 employee1.AddScore(5);
-employee2.AddScore(1);
+employee2.AddScore(4);
 employee3.AddScore(2);
 employee1.AddScore(8);
 employee2.AddScore(1);
@@ -32,6 +32,7 @@ foreach (var empleyee in employeeList)
     if (empleyee.Result > maxResult)
     {
         employeeWithMaxResult = empleyee;
+        maxResult = empleyee.Result;
     }
 }
 
