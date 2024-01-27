@@ -11,6 +11,12 @@ namespace ChallengeApp
             this.LastName = lastName;
             this.Age = age;
         }
+
+        public Employee(string firstName)
+        {
+            this.FirstName = firstName;
+         
+        }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public int Age { get; set; }
