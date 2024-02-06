@@ -15,7 +15,7 @@ namespace ChallengeApp.Tests
             var result = employee.GetStatistics();
 
             Assert.AreEqual(5, result.Min);
-            Assert.AreEqual(11.4F, result.Average);
+            Assert.AreEqual(Math.Round(11.4, 2), Math.Round(result.Average, 2));
             Assert.AreEqual(18, result.Max);
         }
         [Test]
@@ -31,7 +31,7 @@ namespace ChallengeApp.Tests
             var result = employee.GetStatistics();
 
             Assert.That(result.Min, Is.EqualTo(-18));
-            Assert.That(result.Average, Is.EqualTo(2.2F));
+            Assert.That(Math.Round(result.Average, 2), Is.EqualTo(Math.Round(2.2, 2)));
             Assert.That(result.Max, Is.EqualTo(14));
         }
     }
