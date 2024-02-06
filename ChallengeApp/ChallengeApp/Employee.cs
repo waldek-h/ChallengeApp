@@ -1,7 +1,4 @@
-﻿//1. Stwórz klasę Employee, w której przechowaz imię, nazwisko, wiek
-//    oraz punkty pracownika w postaci liczb całkowitych.
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class Employee
     {
@@ -15,20 +12,42 @@ namespace ChallengeApp
         public Employee(string firstName)
         {
             this.FirstName = firstName;
-         
+
         }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public int Age { get; set; }
 
-        private List<int> score = new List<int>();
-        public void AddScore(int score)
+        private List<float> grades = new List<float>();
+        public void AddGrade(float grade)
         {
-            this.score.Add(score);
+            this.grades.Add(grade);
         }
-        public int Result
+        public float Result
         {
-            get { return score.Sum(); }
+            get { return grades.Sum(); }
         }
+
+        public Statistics GetStatistics()
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var grade in this.grades)
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
+
+
+            }
+
+            statistics.Average /= this.grades.Count;
+
+            return statistics;
+        }
+
     }
 }

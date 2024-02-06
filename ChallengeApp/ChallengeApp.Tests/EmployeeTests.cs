@@ -5,42 +5,34 @@ namespace ChallengeApp.Tests
         [Test]
         public void WhenWeAddPoints()
         {
-            var user = new Employee("Micha³", "Nowak", 45);
-            user.AddScore(5);
-            user.AddScore(6);
-            user.AddScore(11);
+            var employee = new Employee("Micha³", "Nowak", 45);
+            employee.AddGrade(11);
+            employee.AddGrade(18);
+            employee.AddGrade(14);
+            employee.AddGrade(5);
+            employee.AddGrade(9);
 
-            var result = user.Result;
+            var result = employee.GetStatistics();
 
-            Assert.AreEqual(22, result);
+            Assert.AreEqual(5, result.Min);
+            Assert.AreEqual(11.4F, result.Average);
+            Assert.AreEqual(18, result.Max);
         }
-
         [Test]
-        public void WhenWeSubtractPoints()
+        public void WhenWeAddOrSubstractPoints()
         {
-            var user = new Employee("Micha³", "Nowak", 45);
-            user.AddScore(-3);
-            user.AddScore(-2);
-            user.AddScore(-14);
+            var employee = new Employee("Micha³", "Nowak", 45);
+            employee.AddGrade(11);
+            employee.AddGrade(-18);
+            employee.AddGrade(14);
+            employee.AddGrade(-5);
+            employee.AddGrade(9);
 
-            var result = user.Result;
+            var result = employee.GetStatistics();
 
-            Assert.AreEqual(-19, result);
-        }
-
-        [Test]
-        public void WhenWeAddAndSubtractPoints()
-        {
-            var user = new Employee("Micha³", "Nowak", 45);
-            user.AddScore(9);
-            user.AddScore(2);
-            user.AddScore(-1);
-            user.AddScore(12);
-            user.AddScore(-7);
-
-            var result = user.Result;
-
-            Assert.AreEqual(15, result);
+            Assert.That(result.Min, Is.EqualTo(-18));
+            Assert.That(result.Average, Is.EqualTo(2.2F));
+            Assert.That(result.Max, Is.EqualTo(14));
         }
     }
 }
